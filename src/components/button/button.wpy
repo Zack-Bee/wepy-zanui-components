@@ -195,7 +195,7 @@ export default class Button extends wepy.component {
             type: String,
             default: ''
         },
-        bindtap: {
+        bindTap: {
             type: Function,
             default: () => {}
         },
@@ -207,7 +207,7 @@ export default class Button extends wepy.component {
 
     methods = {
         onTap: (event) => {
-            this.bindtap(event)
+            this.bindTap(event)
         }
     }
 }

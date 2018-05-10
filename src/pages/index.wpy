@@ -1,6 +1,6 @@
 <template>
 <view>
-    <Button :bindtap.sync="bindtap" plain="{{false}}" type="primary" size="mini">hhhhh</Button>
+    <Button :bindTap.sync="bindtap" plain="{{false}}" type="primary" size="mini">hhhhh</Button>
     <Actionsheet :actionClick="actionClick" :cancel="cancel" :cancelText="cancelText" :actions.sync="actions" :show.sync="show"/>
 </view>
 </template>
