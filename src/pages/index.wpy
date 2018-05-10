@@ -1,0 +1,66 @@
+<template>
+<view>
+    <Button :bindtap.sync="bindtap" plain="{{false}}" type="primary" size="mini">hhhhh</Button>
+    <Actionsheet :actionClick="actionClick" :cancel="cancel" :cancelText="cancelText" :actions.sync="actions" :show.sync="show"/>
+</view>
+</template>
+
+<script>
+import wepy from 'wepy'
+import Button from '../components/button/button'
+import Actionsheet from '../components/actionsheet/actionsheet'
+
+export default class Index extends wepy.page {
+    config = {
+        navigationBarTitleText: 'test'
+    }
+    components = {
+        Button,
+        Actionsheet
+    }
+
+    data = {
+        bindtap(event) {
+            console.log(event)
+        },
+        actions: [
+            {
+                name: '选项1',
+                subname: '选项描述语1',
+                loading: true
+            },
+            {
+                name: '选项2',
+                subname: '选项描述语2',
+                loading: false
+            },
+            {
+                name: '去分享',
+                openType: 'share'
+            }
+        ],
+        cancelText: '关闭 Action',
+        show: false,
+        cancel: () => {
+            this.show = false
+            this.$apply()
+        },
+        actionClick: (event) => {
+            console.log(event)
+        }
+    }
+
+    computed = {}
+
+    methods = {}
+
+    onLoad() {
+        setTimeout(() => {
+            this.show = true
+            this.$apply()
+        }, 2000);
+    }
+
+    watch = {}
+}
+</script>
