@@ -336,7 +336,7 @@ export default class Button extends wepy.component {
             type: Function,
             default: () => {}
         },
-        handleButtinClick: {
+        handleButtonClick: {
             type: Function,
             default: () => {}
         }
@@ -344,7 +344,7 @@ export default class Button extends wepy.component {
 
     methods = {
         onButtonClick: event => {
-            this.handleButtinClick(event)
+            this.handleButtonClick(event)
         },
         onMaskClick: event => {
             this.handleMaskClick(event)

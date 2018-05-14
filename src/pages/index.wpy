@@ -59,6 +59,7 @@ export default class Index extends wepy.page {
         },
         onButtonClick: event => {
             console.log(event)
+            this.hideDialog()
         },
         buttons: [
             {
