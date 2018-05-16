@@ -4,6 +4,7 @@
         <Actionsheet :actionClick="actionClick" :cancel="cancel" :cancelText="cancelText" :actions.sync="actions" :show.sync="show" />
         <Dialog :show.sync="isDialogShow" :handleMaskClick="hideDialog"
             :handleButtonClick="onButtonClick" :buttons.sync="buttons"/>
+        <Field :value.sync="fieldValue" placeholder="输入试试" :handleFieldChange="onFieldChange" title="时间"/>
     </view>
 </template>
 
@@ -12,6 +13,7 @@ import wepy from 'wepy'
 import Button from '../components/button/button'
 import Actionsheet from '../components/actionsheet/actionsheet'
 import Dialog from '../components/dialog/dialog'
+import Field from "../components/field/field"
 
 export default class Index extends wepy.page {
     config = {
@@ -20,7 +22,8 @@ export default class Index extends wepy.page {
     components = {
         Button,
         Actionsheet,
-        Dialog
+        Dialog,
+        Field
     }
 
     data = {
@@ -79,7 +82,12 @@ export default class Index extends wepy.page {
                 text: '取消',
                 type: 'cancel'
             }
-        ]
+        ],
+        onFieldChange: (event) => {
+            this.fieldValue = event.detail.value
+            this.$apply()
+        },
+        fieldValue: ""
     }
 
     computed = {}
