@@ -2,9 +2,9 @@
     <view>
         <Button :bindTap.sync="bindtap" plain="{{false}}" type="primary" size="mini">hhhhh</Button>
         <Actionsheet :actionClick="actionClick" :cancel="cancel" :cancelText="cancelText" :actions.sync="actions" :show.sync="show" />
-        <Dialog :show.sync="isDialogShow" :handleMaskClick="hideDialog"
-            :handleButtonClick="onButtonClick" :buttons.sync="buttons"/>
-        <Field :value.sync="fieldValue" placeholder="输入试试" :handleFieldChange="onFieldChange" title="时间"/>
+        <Dialog :show.sync="isDialogShow" :handleMaskClick="hideDialog" :handleButtonClick="onButtonClick" :buttons.sync="buttons" />
+        <Field :value.sync="fieldValue" placeholder="输入试试" :handleFieldChange="onFieldChange" title="时间" />
+        <Steps type="vertical" :steps.sync="steps"/>
     </view>
 </template>
 
@@ -13,7 +13,8 @@ import wepy from 'wepy'
 import Button from '../components/button/button'
 import Actionsheet from '../components/actionsheet/actionsheet'
 import Dialog from '../components/dialog/dialog'
-import Field from "../components/field/field"
+import Field from '../components/field/field'
+import Steps from '../components/steps/steps'
 
 export default class Index extends wepy.page {
     config = {
@@ -23,7 +24,8 @@ export default class Index extends wepy.page {
         Button,
         Actionsheet,
         Dialog,
-        Field
+        Field,
+        Steps
     }
 
     data = {
@@ -83,11 +85,35 @@ export default class Index extends wepy.page {
                 type: 'cancel'
             }
         ],
-        onFieldChange: (event) => {
+        onFieldChange: event => {
             this.fieldValue = event.detail.value
             this.$apply()
         },
-        fieldValue: ""
+        fieldValue: '',
+        steps: [
+            {
+                // 此步骤是否当前完成状态
+                current: false,
+                // 此步骤是否已经完成
+                done: true,
+                // 此步骤显示文案
+                text: '步骤一',
+                // 此步骤描述语
+                desc: '10.01'
+            },
+            {
+                done: true,
+                current: false,
+                text: '步骤二',
+                desc: '10.02'
+            },
+            {
+                done: true,
+                current: true,
+                text: '步骤三',
+                desc: '10.03'
+            }
+        ]
     }
 
     computed = {}
