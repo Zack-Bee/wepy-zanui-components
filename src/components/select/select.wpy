@@ -450,7 +450,7 @@ export default class Select extends wepy.component {
         },
         activeColor: {
             type: String,
-            default: "ff4444"
+            default: "#ff4444"
         },
         handleSelectChange: {
             type: Function,
