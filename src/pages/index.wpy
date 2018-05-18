@@ -4,7 +4,12 @@
         <Actionsheet :actionClick="actionClick" :cancel="cancel" :cancelText="cancelText" :actions.sync="actions" :show.sync="show" />
         <Dialog :show.sync="isDialogShow" :handleMaskClick="hideDialog" :handleButtonClick="onButtonClick" :buttons.sync="buttons" />
         <Field :value.sync="fieldValue" placeholder="输入试试" :handleFieldChange="onFieldChange" title="时间" />
-        <Steps type="vertical" :steps.sync="steps"/>
+        <Steps type="vertical" :steps.sync="steps" />
+        <icon1 type="new" style="color: #2ea7e0"/>
+        <icon2 type="phone" />
+        <icon3 type="location" />
+        <Select :items.sync="selectItems" :checkedValue.sync="checkedValue"
+            :handleSelectChange="handleSelectChange" activeColor="#ff4443"/>
     </view>
 </template>
 
@@ -15,6 +20,8 @@ import Actionsheet from '../components/actionsheet/actionsheet'
 import Dialog from '../components/dialog/dialog'
 import Field from '../components/field/field'
 import Steps from '../components/steps/steps'
+import Icon from '../components/icon/icon'
+import Select from '../components/select/select'
 
 export default class Index extends wepy.page {
     config = {
@@ -25,7 +32,11 @@ export default class Index extends wepy.page {
         Actionsheet,
         Dialog,
         Field,
-        Steps
+        Steps,
+        icon1: Icon,
+        icon2: Icon,
+        icon3: Icon,
+        Select
     }
 
     data = {
@@ -113,7 +124,25 @@ export default class Index extends wepy.page {
                 text: '步骤三',
                 desc: '10.03'
             }
-        ]
+        ],
+        selectItems: [
+            {
+                value: '1',
+                // 选项文案
+                name: '选项一'
+            },
+            {
+                value: '2',
+                name: '选项二'
+            }
+        ],
+        checkedValue: '1',
+        activeColor: '#ff4443',
+        handleSelectChange: (event) => {
+            console.log(event)
+            this.checkedValue = event.detail.value
+            this.$apply()
+        }
     }
 
     computed = {}
