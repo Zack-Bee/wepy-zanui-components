@@ -10,6 +10,7 @@
         <icon3 type="location" />
         <Select :items.sync="selectItems" :checkedValue.sync="checkedValue"
             :handleSelectChange="handleSelectChange" activeColor="#ff4443"/>
+        <Toptips :isShow.sync="isToptipsShow" :content.sync="toptipsContent"/>
     </view>
 </template>
 
@@ -22,6 +23,7 @@ import Field from '../components/field/field'
 import Steps from '../components/steps/steps'
 import Icon from '../components/icon/icon'
 import Select from '../components/select/select'
+import Toptips from "../components/toptips/toptips"
 
 export default class Index extends wepy.page {
     config = {
@@ -36,7 +38,8 @@ export default class Index extends wepy.page {
         icon1: Icon,
         icon2: Icon,
         icon3: Icon,
-        Select
+        Select,
+        Toptips
     }
 
     data = {
@@ -114,12 +117,6 @@ export default class Index extends wepy.page {
             },
             {
                 done: true,
-                current: false,
-                text: '步骤二',
-                desc: '10.02'
-            },
-            {
-                done: true,
                 current: true,
                 text: '步骤三',
                 desc: '10.03'
@@ -142,7 +139,9 @@ export default class Index extends wepy.page {
             console.log(event)
             this.checkedValue = event.detail.value
             this.$apply()
-        }
+        },
+        isToptipsShow: false,
+        toptipsContent: "哈哈哈哈哈哈"
     }
 
     computed = {}
@@ -158,6 +157,14 @@ export default class Index extends wepy.page {
                 this.$apply()
             }, 5000)
         }, 2000)
+        setTimeout(() => {
+            this.isToptipsShow = true
+            this.$apply()
+            setTimeout(() => {
+                this.isToptipsShow = false
+                this.$apply()
+            }, 2000)
+        }, 5000)
     }
 
     watch = {}

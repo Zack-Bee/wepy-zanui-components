@@ -1,28 +1,14 @@
 <template>
     <radio-group class="zan-select__list" bindchange="onSelectChange">
         <label wx:for="{{ items }}" wx:key="value">
-            <!-- <zan-cell> -->
-            <!-- <radio class="zan-select__radio" value="{{ item.value }}" checked="{{ item.value === checkedValue }}" /> -->
-            <!-- <span style="{{ parse.getItemStyle(item, checkedValue, activeColor) }}">{{ item.name }}</span> -->
-            <!-- <zan-icon wx:if="{{ item.value === checkedValue }}" slot="footer" type="success" style="color: {{ parse.getColor(activeColor) }};font-size: 14px;" /> -->
-            <!-- </zan-cell> -->
             <view class="zan-cell">
-
                 <view class="zan-cell__icon">
-                    <!-- <slot name="icon"></slot> -->
                 </view>
-
                 <view class="zan-cell__bd">
-                    <!-- <view wx:if="{{ title }}" class="zan-cell__text">{{ title }}</view> -->
-                    <!-- <view wx:if="{{ label }}" class="zan-cell__desc">{{ label }}</view> -->
                     <radio class="zan-select__radio" value="{{ item.value }}" checked="{{ item.value === checkedValue }}" />
                     <span style="color: {{item.value === checkedValue ? activeColor : ''}}">{{ item.name }}</span>
                 </view>
-
                 <view catchtap="navigateTo" class="zan-cell__ft">
-                    <!-- <block wx:if="{{value}}">{{ value }}</block> -->
-                    <!-- <block wx:else> -->
-                    <!-- </block> -->
                     <view
                         wx:if="{{ item.value === checkedValue }}"
                         class="zan-icon zan-icon-success"
@@ -433,12 +419,8 @@
 
 <script>
 import wepy from 'wepy'
-import Icon from "./icon/icon"
 
 export default class Select extends wepy.component {
-    components = {
-        Icon
-    }
     props = {
         items: {
             type: Array,
