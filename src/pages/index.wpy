@@ -11,6 +11,7 @@
         <Select :items.sync="selectItems" :checkedValue.sync="checkedValue"
             :handleSelectChange="handleSelectChange" activeColor="#ff4443"/>
         <Toptips :isShow.sync="isToptipsShow" :content.sync="toptipsContent"/>
+        <Loading type="dot" color="black"/>
     </view>
 </template>
 
@@ -24,6 +25,7 @@ import Steps from '../components/steps/steps'
 import Icon from '../components/icon/icon'
 import Select from '../components/select/select'
 import Toptips from "../components/toptips/toptips"
+import Loading from "../components/loading/loading"
 
 export default class Index extends wepy.page {
     config = {
@@ -39,7 +41,8 @@ export default class Index extends wepy.page {
         icon2: Icon,
         icon3: Icon,
         Select,
-        Toptips
+        Toptips,
+        Loading
     }
 
     data = {
